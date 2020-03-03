@@ -1,9 +1,8 @@
 
-SamplerConnector turns a mini computer into a live performance Linuxsampler box, which requires no screen.
 
 - performance without a screen, controll via hardware midi sequencer/controller
 
-- screen only for first time setup and advanced configuration required (change of devices)
+- screen required for first time setup and advanced configuration required (change of devices)
 
 - autoconnect features: Add SamplerConnector to the autostart programs (e.g. for Debian as SamplerConnector.desktop file in .config/autostart); SamplerConnector starts ready to play and connects all required alsa midi and jack rt connections 
 
