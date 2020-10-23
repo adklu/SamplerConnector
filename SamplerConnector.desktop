@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=SamplerConnector
+Version=0.9
+GenericName=SamplerConnector
+Comment=SamplerConnector
+Exec=/home/[user name]/SamplerConnector/SamplerConnector %F
+Categories=audio;Qt;
+Keywords=midi;
+Terminal=false
+Type=Application
+Name[en_CA]=SamplerConnector
