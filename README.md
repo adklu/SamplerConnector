@@ -1,8 +1,9 @@
 
+SamplerConnector turns a mini computer into a live performance Linuxsampler box, which requires no screen.
 
 - performance without a screen, controll via hardware midi sequencer/controller
 
-- screen required for first time setup and advanced configuration required (change of devices)
+- screen only for first time setup and advanced configuration required (change of devices)
 
 - autoconnect features: Add SamplerConnector to the autostart programs (e.g. for Debian as SamplerConnector.desktop file in .config/autostart); SamplerConnector starts ready to play and connects all required alsa midi and jack rt connections 
 
@@ -10,7 +11,45 @@
 
 - please restart SamplerConnector after saving changes (e.g. changing the path of the qmidiarp file).
 
-- required: libasound2-dev, gnome-terminal, netcat, Linuxsampler, alsa, jack2
+
+
+REQUIRED
+
+Linux (tested with Debian 9 and 10)
+
+Qt5, qt5-default
+
+build-essential
+
+qmake
+
+GNU Autotools (automake, autoconf, configure, make)
+
+mesa-common-dev
+
+libgl1-mesa-dev, libglu1-mesa-dev
+
+ALSA
+
+libasound2-dev
+
+libasound2
+
+gnome-terminal
+
+Linuxsampler
+
+Jack (tested with 1.9.10) with realtime scheduling
+
+(see https://jackaudio.org/faq/linux_rt_config.html)
+
+libjack-dev or libjack-jackd2-dev
+
+
+
+(gtk2: install qt5-style-plugins -> echo "export QT_QPA_PLATFORMTHEME=gtk2" >> ~/.profile)
+
+INSTALL: ./INSTALL.sh
 
 SamplerConnector: Copyright (c) 2016 A. Klumpp
 
@@ -29,41 +68,3 @@ SamplerConnector: Copyright (c) 2016 A. Klumpp
 // *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 // *
 
-Please also read the license of the alsa library inside of the alsa folder.
-
-
-INSTALL
-
-
-[[1.1) Create makefile for Qt source (execute commands and create files inside of folder) 
-qmake 
-
-1.1.1) Edit makefile -remove absolute paths: 
-old: /home/username/gnulocsys 
-new: gnulocsys -add $(DESTDIR) 
-
-and remove local in install path: 
-old: @test -d $(INSTALL_ROOT)/usr/local/bin 
-new: @test -d $(INSTALL_ROOT)$(DESTDIR)/usr/bin 
-
-1.2) Create configure file 
-1.2.1) Create configure.ac file: 
-AC_INIT([SamplerConnector], 9.0.0) 
-AM_INIT_AUTOMAKE 
-AC_PROG_CC 
-AC_CONFIG_FILES(Makefile) 
-AC_OUTPUT 
-
-1.2.2) Rename Makefile into Makefile.am 
-1.2.3) aclocal 
-1.2.4) automake --add-missing --foreign 
-1.2.5) autoconf 
-1.2.6) Rename Makefile.am into Makefile]]
-
-1.3) If makefile is already available Configure: make, make install
-
-1.3.1 ./configure
-
-1.3.2 make
-
-1.3.3 (optional) sudo make install
